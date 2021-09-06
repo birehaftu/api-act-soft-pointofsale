@@ -3,8 +3,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.awt.geom.Arc2D;
 import java.util.Date;
 
 @Entity
@@ -40,13 +38,13 @@ public class CardTransaction {
     }
     @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "user_transaction_user_id", nullable = false)
-    private User user_transaction;
+    private Users user_transaction;
 
-    public User getUser_Transaction() {
+    public Users getUser_Transaction() {
         return user_transaction;
     }
 
-    public void setUser_Transaction(User user_transaction) {
+    public void setUser_Transaction(Users user_transaction) {
         this.user_transaction = user_transaction;
     }
 }

@@ -1,7 +1,7 @@
 package edu.act.apiactsoftpointofsale.services;
 
 import edu.act.apiactsoftpointofsale.repositories.UserRepository;
-import edu.act.apiactsoftpointofsale.domains.User;
+import edu.act.apiactsoftpointofsale.domains.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,12 +10,12 @@ public class UserService {
     @Autowired
     private UserRepository UserRepository;
 
-    public User createUser(User User) {
+    public Users createUser(Users User) {
 
         return UserRepository.save(User);
     }
 
-    public Iterable<User> allUsers() {
+    public Iterable<Users> allUsers() {
         return UserRepository.findAll();
     }
 }

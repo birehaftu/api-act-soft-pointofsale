@@ -1,6 +1,6 @@
 package edu.act.apiactsoftpointofsale.controllers;
 
-import edu.act.apiactsoftpointofsale.domains.User;
+import edu.act.apiactsoftpointofsale.domains.Users;
 import edu.act.apiactsoftpointofsale.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +19,13 @@ public class UserController {
     // call service class
 
     @PostMapping("/api/User/create")
-    public User createUser(@RequestBody User User) {
+    public Users createUser(@RequestBody Users User) {
         return UserService.createUser(User);
     }
 
     // list all Users
     @GetMapping("/api/User/list")
-    public Iterable<User> listUsers() {
+    public Iterable<Users> listUsers() {
         return UserService.allUsers();
     }
 }
