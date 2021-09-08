@@ -19,7 +19,7 @@ public class CustomerController {
     // call service class
 
     @PostMapping("/api/Customer/create")
-    public Customer createCustomer(@RequestBody Customer Customer) {
+    public boolean createCustomer(@RequestBody Customer Customer) {
         return CustomerService.createCustomer(Customer);
     }
 

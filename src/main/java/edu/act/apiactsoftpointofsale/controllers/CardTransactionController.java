@@ -19,7 +19,7 @@ public class CardTransactionController {
     // call service class
 
     @PostMapping("/api/CardTransaction/create")
-    public CardTransaction createCardTransaction(@RequestBody CardTransaction CardTransaction) {
+    public boolean createCardTransaction(@RequestBody CardTransaction CardTransaction) {
         return CardTransactionService.createCardTransaction(CardTransaction);
     }
 

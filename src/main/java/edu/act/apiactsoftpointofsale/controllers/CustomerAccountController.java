@@ -20,7 +20,7 @@ public class CustomerAccountController {
     // call service class
 
     @PostMapping("/api/CustomerAccount/create")
-    public CustomerAccount createCustomerAccount(@RequestBody CustomerAccount CustomerAccount) {
+    public boolean createCustomerAccount(@RequestBody CustomerAccount CustomerAccount) {
         return CustomerAccountService.createCustomerAccount(CustomerAccount);
     }
 
