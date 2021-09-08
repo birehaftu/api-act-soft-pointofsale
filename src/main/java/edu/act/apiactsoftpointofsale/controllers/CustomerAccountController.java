@@ -24,6 +24,21 @@ public class CustomerAccountController {
         return CustomerAccountService.createCustomerAccount(CustomerAccount);
     }
 
+    @PostMapping("/api/CustomerAccount/update")
+    public boolean updateCustomerAccount(@RequestBody CustomerAccount CustomerAccount) {
+        return CustomerAccountService.updateCustomerAccount(CustomerAccount);
+    }
+
+    @PostMapping("/api/CustomerAccount/getByID")
+    public CustomerAccount getCustomerAccount(@RequestBody long id) {
+        return CustomerAccountService.getCustomerAccount(id);
+    }
+
+    @PostMapping("/api/CustomerAccount/delete")
+    public boolean deleteCustomerAccount(@RequestBody long id) {
+        return CustomerAccountService.deleteCustomerAccount(id);
+    }
+
     // list all CustomerAccounts
     @GetMapping("/api/CustomerAccount/list")
     public Iterable<CustomerAccount> listCustomerAccounts() {

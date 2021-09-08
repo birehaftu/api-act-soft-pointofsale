@@ -24,6 +24,21 @@ public class CustomerCardController {
         return CustomerCardService.createCustomerCard(CustomerCard);
     }
 
+    @PostMapping("/api/CustomerCard/update")
+    public boolean updateCustomerCard(@RequestBody CustomerCard CustomerCard) {
+        return CustomerCardService.updateCustomerCard(CustomerCard);
+    }
+
+    @PostMapping("/api/CustomerCard/getByID")
+    public CustomerCard getCustomerCard(@RequestBody long id) {
+        return CustomerCardService.getCustomerCard(id);
+    }
+
+    @PostMapping("/api/CustomerCard/delete")
+    public boolean deleteCustomerCard(@RequestBody long id) {
+        return CustomerCardService.deleteCustomerCard(id);
+    }
+
     // list all CustomerCards
     @GetMapping("/api/CustomerCard/list")
     public Iterable<CustomerCard> listCustomerCards() {

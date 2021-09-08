@@ -23,6 +23,21 @@ public class UserController {
         return UserService.createUser(User);
     }
 
+    @PostMapping("/api/User/update")
+    public boolean updateUser(@RequestBody Users User) {
+        return UserService.updateUser(User);
+    }
+
+    @PostMapping("/api/User/getByID")
+    public Users getUser(@RequestBody long id) {
+        return UserService.getUser(id);
+    }
+
+    @PostMapping("/api/User/delete")
+    public boolean deleteUser(@RequestBody long id) {
+        return UserService.deleteUser(id);
+    }
+
     // list all Users
     @GetMapping("/api/User/list")
     public Iterable<Users> listUsers() {

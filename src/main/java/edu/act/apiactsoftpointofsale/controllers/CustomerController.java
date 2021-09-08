@@ -23,6 +23,21 @@ public class CustomerController {
         return CustomerService.createCustomer(Customer);
     }
 
+    @PostMapping("/api/Customer/update")
+    public boolean updateCustomer(@RequestBody Customer Customer) {
+        return CustomerService.updateCustomer(Customer);
+    }
+
+    @PostMapping("/api/Customer/getByID")
+    public Customer getCustomer(@RequestBody long id) {
+        return CustomerService.getCustomer(id);
+    }
+
+    @PostMapping("/api/Customer/delete")
+    public boolean deleteCustomer(@RequestBody long id) {
+        return CustomerService.deleteCustomer(id);
+    }
+
     // list all Customers
     @GetMapping("/api/Customer/list")
     public Iterable<Customer> listCustomers() {

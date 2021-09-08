@@ -23,6 +23,21 @@ public class CardTransactionController {
         return CardTransactionService.createCardTransaction(CardTransaction);
     }
 
+    @PostMapping("/api/CardTransaction/update")
+    public boolean updateCardTransaction(@RequestBody CardTransaction CardTransaction) {
+        return CardTransactionService.updateCardTransaction(CardTransaction);
+    }
+
+    @PostMapping("/api/CardTransaction/getByID")
+    public CardTransaction getCardTransaction(@RequestBody long id) {
+        return CardTransactionService.getCardTransaction(id);
+    }
+
+    @PostMapping("/api/CardTransaction/delete")
+    public boolean deleteCardTransaction(@RequestBody long id) {
+        return CardTransactionService.deleteCardTransaction(id);
+    }
+
     // list all CardTransactions
     @GetMapping("/api/CardTransaction/list")
     public Iterable<CardTransaction> listCardTransactions() {
