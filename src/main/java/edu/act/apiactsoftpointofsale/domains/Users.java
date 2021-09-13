@@ -16,11 +16,11 @@ public class Users {
 
     @NotBlank(message = "Full Name is mandatory.")
     @Column(nullable = false)
-    private String FullName;
+    private String fullName;
 
     @NotBlank(message = "Role mandatory.")
     @Column(nullable = false)
-    private String Role;
+    private String role;
 
     @NotBlank(message = "User name is mandatory.")
     @Column(nullable = false)
