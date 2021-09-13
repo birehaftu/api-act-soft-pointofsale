@@ -2,6 +2,7 @@ package edu.act.apiactsoftpointofsale.services;
 
 import edu.act.apiactsoftpointofsale.domains.CardTransaction;
 import edu.act.apiactsoftpointofsale.domains.CardTransaction;
+import edu.act.apiactsoftpointofsale.domains.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,16 +30,16 @@ public class CardTransactionService {
         }catch(Exception ex){
             return false;
         }
-    }public CardTransaction getCardTransaction(long id) {
+    }public CardTransaction getCardTransaction(ID id) {
         try {
-            return CardTransactionRepository.findById(id).get();
+            return CardTransactionRepository.findById(id.getId()).get();
         }catch(Exception ex){
             return null;
         }
     }
-    public boolean deleteCardTransaction(long id) {
+    public boolean deleteCardTransaction(ID id) {
         try {
-            CardTransactionRepository.deleteById(id);
+            CardTransactionRepository.deleteById(id.getId());
             return true;
         }catch(Exception ex){
             return false;

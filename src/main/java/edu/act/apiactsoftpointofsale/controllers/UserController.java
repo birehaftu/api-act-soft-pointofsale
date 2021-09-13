@@ -1,5 +1,6 @@
 package edu.act.apiactsoftpointofsale.controllers;
 
+import edu.act.apiactsoftpointofsale.domains.ID;
 import edu.act.apiactsoftpointofsale.domains.Users;
 import edu.act.apiactsoftpointofsale.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,12 @@ public class UserController {
     }
 
     @PostMapping("/api/User/getByID")
-    public Users getUser(@RequestBody long id) {
+    public Users getUser(@RequestBody ID id) {
         return UserService.getUser(id);
     }
 
     @PostMapping("/api/User/delete")
-    public boolean deleteUser(@RequestBody long id) {
+    public boolean deleteUser(@RequestBody ID id) {
         return UserService.deleteUser(id);
     }
 

@@ -2,6 +2,7 @@ package edu.act.apiactsoftpointofsale.services;
 
 import edu.act.apiactsoftpointofsale.domains.Customer;
 import edu.act.apiactsoftpointofsale.domains.Customer;
+import edu.act.apiactsoftpointofsale.domains.ID;
 import edu.act.apiactsoftpointofsale.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,16 +36,16 @@ public class CustomerService {
         }catch(Exception ex){
             return false;
         }
-    }public Customer getCustomer(long id) {
+    }public Customer getCustomer(ID id) {
         try {
-            return customerRepository.findById(id).get();
+            return customerRepository.findById(id.getId()).get();
         }catch(Exception ex){
             return null;
         }
     }
-    public boolean deleteCustomer(long id) {
+    public boolean deleteCustomer(ID id) {
         try {
-            customerRepository.deleteById(id);
+            customerRepository.deleteById(id.getId());
             return true;
         }catch(Exception ex){
             return false;

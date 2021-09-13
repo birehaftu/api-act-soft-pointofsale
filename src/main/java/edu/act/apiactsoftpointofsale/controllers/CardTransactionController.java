@@ -1,6 +1,7 @@
 package edu.act.apiactsoftpointofsale.controllers;
 
 import edu.act.apiactsoftpointofsale.domains.CardTransaction;
+import edu.act.apiactsoftpointofsale.domains.ID;
 import edu.act.apiactsoftpointofsale.services.CardTransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,12 +30,12 @@ public class CardTransactionController {
     }
 
     @PostMapping("/api/CardTransaction/getByID")
-    public CardTransaction getCardTransaction(@RequestBody long id) {
+    public CardTransaction getCardTransaction(@RequestBody ID id) {
         return CardTransactionService.getCardTransaction(id);
     }
 
     @PostMapping("/api/CardTransaction/delete")
-    public boolean deleteCardTransaction(@RequestBody long id) {
+    public boolean deleteCardTransaction(@RequestBody ID id) {
         return CardTransactionService.deleteCardTransaction(id);
     }
 

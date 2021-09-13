@@ -2,6 +2,7 @@ package edu.act.apiactsoftpointofsale.controllers;
 
 
 import edu.act.apiactsoftpointofsale.domains.CustomerAccount;
+import edu.act.apiactsoftpointofsale.domains.ID;
 import edu.act.apiactsoftpointofsale.services.CustomerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,12 +31,12 @@ public class CustomerAccountController {
     }
 
     @PostMapping("/api/CustomerAccount/getByID")
-    public CustomerAccount getCustomerAccount(@RequestBody long id) {
+    public CustomerAccount getCustomerAccount(@RequestBody ID id) {
         return CustomerAccountService.getCustomerAccount(id);
     }
 
     @PostMapping("/api/CustomerAccount/delete")
-    public boolean deleteCustomerAccount(@RequestBody long id) {
+    public boolean deleteCustomerAccount(@RequestBody ID id) {
         return CustomerAccountService.deleteCustomerAccount(id);
     }
 

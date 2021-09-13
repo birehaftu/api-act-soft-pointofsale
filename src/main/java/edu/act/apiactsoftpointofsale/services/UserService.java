@@ -1,5 +1,6 @@
 package edu.act.apiactsoftpointofsale.services;
 
+import edu.act.apiactsoftpointofsale.domains.ID;
 import edu.act.apiactsoftpointofsale.repositories.UserRepository;
 import edu.act.apiactsoftpointofsale.domains.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,16 +38,16 @@ public class UserService {
         }catch(Exception ex){
             return false;
         }
-    }public Users getUser(long id) {
+    }public Users getUser(ID id) {
         try {
-            return UserRepository.findById(id).get();
+            return UserRepository.findById(id.getId()).get();
         }catch(Exception ex){
             return null;
         }
     }
-    public boolean deleteUser(long id) {
+    public boolean deleteUser(ID id) {
         try {
-            UserRepository.deleteById(id);
+            UserRepository.deleteById(id.getId());
             return true;
         }catch(Exception ex){
             return false;
