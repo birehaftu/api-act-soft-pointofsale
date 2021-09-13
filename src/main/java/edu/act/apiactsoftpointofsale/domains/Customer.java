@@ -1,12 +1,18 @@
 package edu.act.apiactsoftpointofsale.domains;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +24,7 @@ public class Customer {
 
     @NotBlank(message = "Date of Birth mandatory.")
     @Column(nullable = false)
-    private Date dob;
+    private LocalDate dob;
 
     @NotBlank(message = "phone is mandatory.")
     @Column(nullable = false)
@@ -30,12 +36,10 @@ public class Customer {
 
     @NotBlank(message = "Merital Status is mandatory.")
     @Column(nullable = false)
-    private String meritalStatus;
+    private String maritalStatus;
 
     @NotBlank(message = "Address is mandatory.")
     @Column(nullable = false)
     private String address;
 
-   // @OneToMany(mappedBy="customer_account")
-    //private Set<CustomerAccount> accounts;
 }

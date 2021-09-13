@@ -28,7 +28,7 @@ public class CustomerService {
             myCustomer.setEmail(Customer.getEmail());
             myCustomer.setDob(Customer.getDob());
             myCustomer.setFullName(Customer.getFullName());
-            myCustomer.setMeritalStatus(Customer.getMeritalStatus());
+            myCustomer.setMaritalStatus(Customer.getMaritalStatus());
             myCustomer.setPhone(Customer.getPhone());
             myCustomer.setAddress(Customer.getAddress());
             customerRepository.save(myCustomer);

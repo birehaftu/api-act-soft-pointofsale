@@ -1,12 +1,16 @@
 package edu.act.apiactsoftpointofsale.domains;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CardTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +22,7 @@ public class CardTransaction {
 
     @NotBlank(message = "Date of Transaction is mandatory.")
     @Column(nullable = false)
-    private  Date dateofTransaction;
+    private  LocalDate dateofTransaction;
 
     @NotBlank(message = "status mandatory.")
     @Column(nullable = false)
