@@ -14,7 +14,7 @@ public class CardTransaction {
 
     @NotBlank(message = "Amount is mandatory.")
     @Column(nullable = false)
-    private Double Amount;
+    private Double amount;
 
     @NotBlank(message = "Date of Transaction is mandatory.")
     @Column(nullable = false)

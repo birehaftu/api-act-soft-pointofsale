@@ -26,7 +26,7 @@ public class CustomerService {
             long id = Customer.getCustomerId();
             Customer myCustomer = customerRepository.findById(id).get();
             myCustomer.setEmail(Customer.getEmail());
-            myCustomer.setDOB(Customer.getDOB());
+            myCustomer.setDob(Customer.getDob());
             myCustomer.setFullName(Customer.getFullName());
             myCustomer.setMeritalStatus(Customer.getMeritalStatus());
             myCustomer.setPhone(Customer.getPhone());

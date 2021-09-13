@@ -14,11 +14,11 @@ public class Customer {
 
     @NotBlank(message = "Full Name is mandatory.")
     @Column(nullable = false)
-    private String FullName;
+    private String fullName;
 
     @NotBlank(message = "Date of Birth mandatory.")
     @Column(nullable = false)
-    private Date DOB;
+    private Date dob;
 
     @NotBlank(message = "phone is mandatory.")
     @Column(nullable = false)

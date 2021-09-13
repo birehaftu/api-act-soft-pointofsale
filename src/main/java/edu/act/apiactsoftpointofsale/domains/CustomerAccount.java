@@ -15,14 +15,14 @@ public class CustomerAccount {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="accountnumberseq")
     @NotBlank(message = "AccountNumber is mandatory.")
     @Column(nullable = false)
-    private String AccountNumber;
+    private String accountNumber;
     @NotBlank(message = "AccountType mandatory.")
     @Column(nullable = false)
     private String accountType;
 
     @NotBlank(message = "Balanace is mandatory.")
     @Column(nullable = false)
-    private Double Balance=0.0;
+    private Double balance=0.0;
 
     @NotBlank(message = "Status is mandatory.")
     @Column(nullable = false)
