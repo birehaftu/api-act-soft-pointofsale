@@ -14,15 +14,15 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId;
+    private long customerId;
 
     @NotBlank(message = "Full Name is mandatory.")
     @Column(nullable = false)
     private String fullName;
 
-    @NotBlank(message = "Date of Birth mandatory.")
     @Column(nullable = false)
     private LocalDate dob;
 
@@ -34,7 +34,7 @@ public class Customer {
     @Column(nullable = false)
     private String email;
 
-    @NotBlank(message = "Merital Status is mandatory.")
+    @NotBlank(message = "Marital Status is mandatory.")
     @Column(nullable = false)
     private String maritalStatus;
 

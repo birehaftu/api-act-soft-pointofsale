@@ -15,7 +15,7 @@ public class CustomerService {
     public boolean createCustomer(Customer customer) {
 
         try {
-            customerRepository.save(customer);
+            Customer val= customerRepository.save(customer);
             return true;
         }catch(Exception ex){
             return false;

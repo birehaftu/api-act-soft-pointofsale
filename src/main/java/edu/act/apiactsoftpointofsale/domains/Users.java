@@ -15,7 +15,7 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private long userId;
 
     @NotBlank(message = "Full Name is mandatory.")
     @Column(nullable = false)

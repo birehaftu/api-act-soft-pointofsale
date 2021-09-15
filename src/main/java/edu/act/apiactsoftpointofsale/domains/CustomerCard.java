@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 public class CustomerCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cardId;
+    private long cardId;
 
     @NotBlank(message = "pin mandatory.")
     @Column(nullable = false)
@@ -28,7 +28,7 @@ public class CustomerCard {
     private String status;
 
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "customer_card_account_id", nullable = false)
     private CustomerAccount customer_account;
 

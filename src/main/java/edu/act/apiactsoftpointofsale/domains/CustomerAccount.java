@@ -2,6 +2,8 @@ package edu.act.apiactsoftpointofsale.domains;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -10,21 +12,17 @@ import javax.validation.constraints.NotBlank;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SequenceGenerator(name="accountnumberseq", initialValue=1000000000, allocationSize=10)
 public class CustomerAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long accountId;
-
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="accountnumberseq")
-    @NotBlank(message = "AccountNumber is mandatory.")
-    @Column(nullable = false)
-    private String accountNumber;
+    private long accountId;
+    @Column(columnDefinition="serial")
+    @Generated(GenerationTime.INSERT)
+    private long accountNumber;
     @NotBlank(message = "AccountType mandatory.")
     @Column(nullable = false)
     private String accountType;
 
-    @NotBlank(message = "Balanace is mandatory.")
     @Column(nullable = false)
     private Double balance=0.0;
 
@@ -33,7 +31,7 @@ public class CustomerAccount {
     private String status;
 
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "customer_account_customer_id", nullable = false)
     private Customer customer;
 

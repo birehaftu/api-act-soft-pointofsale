@@ -14,7 +14,7 @@ public class CustomerAccountService {
     public boolean createCustomerAccount(CustomerAccount CustomerAccount) {
 
         try {
-            CustomerAccountRepository.save(CustomerAccount);
+            CustomerAccount acc=CustomerAccountRepository.save(CustomerAccount);
             return true;
         }catch(Exception ex){
             return false;

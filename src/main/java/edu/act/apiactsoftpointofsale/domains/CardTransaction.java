@@ -14,13 +14,11 @@ import java.time.LocalDate;
 public class CardTransaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long transactionId;
+    private long transactionId;
 
-    @NotBlank(message = "Amount is mandatory.")
     @Column(nullable = false)
     private Double amount;
 
-    @NotBlank(message = "Date of Transaction is mandatory.")
     @Column(nullable = false)
     private  LocalDate dateofTransaction;
 
@@ -29,7 +27,7 @@ public class CardTransaction {
     private String status;
 
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "customer_transaction_card_id", nullable = false)
     private CustomerCard transaction_card;
 
@@ -40,7 +38,7 @@ public class CardTransaction {
     public void setCard_Transaction(CustomerCard transaction_card) {
         this.transaction_card = transaction_card;
     }
-    @ManyToOne(cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "user_transaction_user_id", nullable = false)
     private Users user_transaction;
 
