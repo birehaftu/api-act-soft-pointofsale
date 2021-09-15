@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -20,11 +21,15 @@ public class CardTransaction {
     private Double amount;
 
     @Column(nullable = false)
-    private  LocalDate dateofTransaction;
+    private LocalDateTime dateofTransaction;
 
     @NotBlank(message = "status mandatory.")
     @Column(nullable = false)
     private String status;
+
+    @NotBlank(message = "goodName mandatory.")
+    @Column(nullable = false)
+    private String goodName;
 
 
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
@@ -38,15 +43,18 @@ public class CardTransaction {
     public void setCard_Transaction(CustomerCard transaction_card) {
         this.transaction_card = transaction_card;
     }
+
+
+
     @ManyToOne(cascade = CascadeType.MERGE, optional = false)
     @JoinColumn(name = "user_transaction_user_id", nullable = false)
-    private Users user_transaction;
+    private Users transaction_user;
 
     public Users getUser_Transaction() {
-        return user_transaction;
+        return transaction_user;
     }
 
     public void setUser_Transaction(Users user_transaction) {
-        this.user_transaction = user_transaction;
+        this.transaction_user = user_transaction;
     }
 }

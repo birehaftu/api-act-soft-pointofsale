@@ -14,7 +14,7 @@ public class CardTransactionService {
     public boolean createCardTransaction(CardTransaction CardTransaction) {
 
         try {
-            CardTransactionRepository.save(CardTransaction);
+            CardTransaction cardTransaction=CardTransactionRepository.save(CardTransaction);
             return true;
         }catch(Exception ex){
             return false;
