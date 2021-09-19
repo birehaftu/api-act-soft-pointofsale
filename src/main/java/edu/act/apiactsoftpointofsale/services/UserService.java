@@ -16,12 +16,16 @@ public class UserService {
     public boolean createUser(Users User) {
 
         try {
-         UserRepository.save(User);
-         return true;
-        }catch(Exception ex){
+            Encryption ecn = new Encryption();
+            String rowpass=User.getPassword();
+            User.setPassword(ecn.EcryptPassword(rowpass));
+            UserRepository.save(User);
+            return true;
+        } catch (Exception ex) {
             return false;
         }
     }
+
     public boolean updateUser(Users User) {
         try {
             long id = User.getUserId();
@@ -35,24 +39,34 @@ public class UserService {
             myUser.setStatus(myUser.getStatus());
             UserRepository.save(myUser);
             return true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return false;
         }
-    }public Users getUser(ID id) {
+    }
+
+    public Users getUser(ID id) {
         try {
             return UserRepository.findById(id.getId()).get();
-        }catch(Exception ex){
+        } catch (Exception ex) {
+            return null;
+        }
+    }public Users findByUserName(String UserName) {
+        try {
+            return UserRepository.findByUserName(UserName);
+        } catch (Exception ex) {
             return null;
         }
     }
+
     public boolean deleteUser(ID id) {
         try {
             UserRepository.deleteById(id.getId());
             return true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }
+
     public Iterable<Users> allUsers() {
         return UserRepository.findAll();
     }
