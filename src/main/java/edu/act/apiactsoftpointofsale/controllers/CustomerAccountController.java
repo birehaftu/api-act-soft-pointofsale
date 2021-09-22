@@ -20,28 +20,28 @@ public class CustomerAccountController {
     // For creating/inserting CustomerAccount to the DB
     // call service class
 
-    @PostMapping("/api/CustomerAccount/create")
+    @PostMapping("/api/customerAccount/create")
     public boolean createCustomerAccount(@RequestBody CustomerAccount CustomerAccount) {
         return CustomerAccountService.createCustomerAccount(CustomerAccount);
     }
 
-    @PostMapping("/api/CustomerAccount/update")
+    @PostMapping("/api/customerAccount/update")
     public boolean updateCustomerAccount(@RequestBody CustomerAccount CustomerAccount) {
         return CustomerAccountService.updateCustomerAccount(CustomerAccount);
     }
 
-    @PostMapping("/api/CustomerAccount/getByID")
+    @PostMapping("/api/customerAccount/getByID")
     public CustomerAccount getCustomerAccount(@RequestBody ID id) {
         return CustomerAccountService.getCustomerAccount(id);
     }
 
-    @PostMapping("/api/CustomerAccount/delete")
+    @PostMapping("/api/customerAccount/delete")
     public boolean deleteCustomerAccount(@RequestBody ID id) {
         return CustomerAccountService.deleteCustomerAccount(id);
     }
 
     // list all CustomerAccounts
-    @GetMapping("/api/CustomerAccount/list")
+    @GetMapping("/api/customerAccount/list")
     public Iterable<CustomerAccount> listCustomerAccounts() {
         return CustomerAccountService.allCustomerAccounts();
     }

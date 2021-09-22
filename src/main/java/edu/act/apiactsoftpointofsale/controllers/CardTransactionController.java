@@ -19,28 +19,28 @@ public class CardTransactionController {
     // For creating/inserting CardTransaction to the DB
     // call service class
 
-    @PostMapping("/api/CardTransaction/create")
+    @PostMapping("/api/cardTransaction/create")
     public boolean createCardTransaction(@RequestBody CardTransaction CardTransaction) {
         return CardTransactionService.createCardTransaction(CardTransaction);
     }
 
-    @PostMapping("/api/CardTransaction/update")
+    @PostMapping("/api/cardTransaction/update")
     public boolean updateCardTransaction(@RequestBody CardTransaction CardTransaction) {
         return CardTransactionService.updateCardTransaction(CardTransaction);
     }
 
-    @PostMapping("/api/CardTransaction/getByID")
+    @PostMapping("/api/cardTransaction/getByID")
     public CardTransaction getCardTransaction(@RequestBody ID id) {
         return CardTransactionService.getCardTransaction(id);
     }
 
-    @PostMapping("/api/CardTransaction/delete")
+    @PostMapping("/api/cardTransaction/delete")
     public boolean deleteCardTransaction(@RequestBody ID id) {
         return CardTransactionService.deleteCardTransaction(id);
     }
 
     // list all CardTransactions
-    @GetMapping("/api/CardTransaction/list")
+    @GetMapping("/api/cardTransaction/list")
     public Iterable<CardTransaction> listCardTransactions() {
         return CardTransactionService.allCardTransactions();
     }

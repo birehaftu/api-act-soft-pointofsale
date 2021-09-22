@@ -17,44 +17,69 @@ public class UserController {
     // For creating/inserting User to the DB
     // call service class
 
-    @PostMapping("/api/User/create")
+    @PostMapping("/api/user/create")
     public boolean createUser(@RequestBody Users User) {
         return UserService.createUser(User);
     }
 
-    @PostMapping("/api/User/update")
+    @PostMapping("/api/user/update")
     public boolean updateUser(@RequestBody Users User) {
         return UserService.updateUser(User);
     }
 
-    @PostMapping("/api/User/getByID")
+    @PostMapping("/api/user/getByID")
     public Users getUser(@RequestBody ID id) {
         return UserService.getUser(id);
     }
 
-    @PostMapping("/api/User/getByUserName/{userName}")
+    @PostMapping("/api/user/getByUserName/{userName}")
     public Users getUser(@PathVariable String userName) {
         return UserService.findByUserName(userName);
     }
 
-    @PostMapping("/api/User/getUserLogIn/{userName}/{password}")
+    @PostMapping("/api/user/getUserLogIn/{userName}/{password}")
     public boolean getUserLogIn(@PathVariable String userName,@PathVariable String password) {
         try {
             Users us = UserService.findByUserName(userName);
-            Encryption ency = new Encryption();
-            return ency.Validate(password, us.getPassword());
+            if (us!=null) {
+                if (us.getRole().equals("Admin")) {
+                    Encryption ency = new Encryption();
+                    return ency.Validate(password, us.getPassword());
+                } else {
+                    return false;
+                }
+            }else{
+                return false;
+            }
         }catch(Exception exception){
             return false;
         }
     }
-
-    @PostMapping("/api/User/delete")
+    @PostMapping("/api/user/getUserAgentLogIn/{userName}/{password}")
+    public boolean getUserLogInAgent(@PathVariable String userName,@PathVariable String password) {
+        try {
+            Users us = UserService.findByUserName(userName);
+            if (us!=null) {
+                if (us.getRole().equals("Agent")) {
+                    Encryption ency = new Encryption();
+                    return ency.Validate(password, us.getPassword());
+                } else {
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }catch(Exception exception){
+            return false;
+        }
+    }
+    @PostMapping("/api/user/delete")
     public boolean deleteUser(@RequestBody ID id) {
         return UserService.deleteUser(id);
     }
 
     // list all Users
-    @GetMapping("/api/User/list")
+    @GetMapping("/api/user/list")
     public Iterable<Users> listUsers() {
         return UserService.allUsers();
     }
