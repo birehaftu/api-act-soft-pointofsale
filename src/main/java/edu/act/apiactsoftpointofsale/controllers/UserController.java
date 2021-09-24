@@ -73,6 +73,20 @@ public class UserController {
             return false;
         }
     }
+    @PostMapping("/api/user/logIn/{userName}/{password}")
+    public Users getLogIn(@PathVariable String userName,@PathVariable String password) {
+        try {
+            Users us = UserService.findByUserName(userName);
+            Encryption ency = new Encryption();
+            if(ency.Validate(password, us.getPassword())) {
+                return us;
+            }else{
+                return null;
+            }
+        }catch(Exception exception){
+            return null;
+        }
+    }
     @PostMapping("/api/user/delete")
     public boolean deleteUser(@RequestBody ID id) {
         return UserService.deleteUser(id);
