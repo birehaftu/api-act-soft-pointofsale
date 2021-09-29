@@ -5,10 +5,7 @@ import edu.act.apiactsoftpointofsale.domains.CustomerCard;
 import edu.act.apiactsoftpointofsale.domains.ID;
 import edu.act.apiactsoftpointofsale.services.CustomerCardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -33,6 +30,11 @@ public class CustomerCardController {
     @PostMapping("/api/customerCard/getByID")
     public CustomerCard getCustomerCard(@RequestBody ID id) {
         return CustomerCardService.getCustomerCard(id);
+    }
+
+    @PostMapping("/api/customerCard/getByCard")
+    public CustomerCard getCustomerCardByCard(@PathVariable String cardCode) {
+        return CustomerCardService.getCustomerCardByCard(cardCode);
     }
 
     @PostMapping("/api/customerCard/delete")

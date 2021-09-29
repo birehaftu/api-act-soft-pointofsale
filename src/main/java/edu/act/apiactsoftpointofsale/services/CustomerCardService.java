@@ -39,6 +39,13 @@ public class CustomerCardService {
             return null;
         }
     }
+    public CustomerCard getCustomerCardByCard(String  id) {
+        try {
+            return CustomerCardRepository.findByCardCode(id);
+        }catch(Exception ex){
+            return null;
+        }
+    }
     public boolean deleteCustomerCard(ID id) {
         try {
             CustomerCardRepository.deleteById(id.getId());
