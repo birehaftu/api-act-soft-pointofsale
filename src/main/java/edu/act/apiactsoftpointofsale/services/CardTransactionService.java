@@ -16,9 +16,8 @@ public class CardTransactionService {
 
         try {
             ct.setDateofTransaction (LocalDateTime.now());
-            CustomerCard card=ct.getTransaction_card();
-            CustomerAccount ca=card.getCustomer_account();
-            ca.setBalance(ca.getBalance()-ct.getAmount());
+            ct.getTransaction_card().getCustomer_account().setBalance
+                    (ct.getTransaction_card().getCustomer_account().getBalance()-ct.getAmount());
             CardTransaction cardTransaction=CardTransactionRepository.save(ct);
             return true;
         }catch(Exception ex){
