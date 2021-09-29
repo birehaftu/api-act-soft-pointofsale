@@ -6,6 +6,8 @@ import edu.act.apiactsoftpointofsale.domains.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class CardTransactionService {
     @Autowired
@@ -14,6 +16,7 @@ public class CardTransactionService {
     public boolean createCardTransaction(CardTransaction CardTransaction) {
 
         try {
+            CardTransaction.setDateofTransaction (LocalDateTime.now());
             CardTransaction cardTransaction=CardTransactionRepository.save(CardTransaction);
             return true;
         }catch(Exception ex){
