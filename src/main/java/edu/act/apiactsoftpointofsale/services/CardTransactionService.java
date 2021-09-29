@@ -1,8 +1,7 @@
 package edu.act.apiactsoftpointofsale.services;
 
+import edu.act.apiactsoftpointofsale.domains.*;
 import edu.act.apiactsoftpointofsale.domains.CardTransaction;
-import edu.act.apiactsoftpointofsale.domains.CardTransaction;
-import edu.act.apiactsoftpointofsale.domains.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +12,14 @@ public class CardTransactionService {
     @Autowired
     private edu.act.apiactsoftpointofsale.repositories.CardTransactionRepository CardTransactionRepository;
 
-    public boolean createCardTransaction(CardTransaction CardTransaction) {
+    public boolean createCardTransaction(CardTransaction ct) {
 
         try {
-            CardTransaction.setDateofTransaction (LocalDateTime.now());
-            CardTransaction cardTransaction=CardTransactionRepository.save(CardTransaction);
+            ct.setDateofTransaction (LocalDateTime.now());
+            CustomerCard card=ct.getTransaction_card();
+            CustomerAccount ca=card.getCustomer_account();
+            ca.setBalance(ca.getBalance()-ct.getAmount());
+            CardTransaction cardTransaction=CardTransactionRepository.save(ct);
             return true;
         }catch(Exception ex){
             return false;
