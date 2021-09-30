@@ -33,7 +33,7 @@ public class CustomerCardController {
     }
 
     @PostMapping("/api/customerCard/getByCard")
-    public CustomerCard getCustomerCardByCard(@PathVariable String cardCode) {
+    public CustomerCard getCustomerCardByCard(@RequestBody String cardCode) {
         return CustomerCardService.getCustomerCardByCard(cardCode);
     }
 

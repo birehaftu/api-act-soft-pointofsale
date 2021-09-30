@@ -14,12 +14,13 @@ public class CustomerAccountService {
     public boolean createCustomerAccount(CustomerAccount CustomerAccount) {
 
         try {
-            CustomerAccount acc=CustomerAccountRepository.save(CustomerAccount);
+            CustomerAccount acc = CustomerAccountRepository.save(CustomerAccount);
             return true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }
+
     public boolean updateCustomerAccount(CustomerAccount CustomerAccount) {
         try {
             long id = CustomerAccount.getAccountId();
@@ -29,24 +30,40 @@ public class CustomerAccountService {
             myCustomerAccount.setStatus(CustomerAccount.getStatus());
             CustomerAccountRepository.save(myCustomerAccount);
             return true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return false;
         }
-    }public CustomerAccount getCustomerAccount(ID id) {
+    }
+
+    public boolean updateCustomerAccountBalance(CustomerAccount CustomerAccount) {
+        try {
+            long id = CustomerAccount.getAccountId();
+            CustomerAccount myCustomerAccount = CustomerAccountRepository.findByAccountId(id);
+            myCustomerAccount.setBalance(CustomerAccount.getBalance());
+            CustomerAccountRepository.save(myCustomerAccount);
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    public CustomerAccount getCustomerAccount(ID id) {
         try {
             return CustomerAccountRepository.findById(id.getId()).get();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return null;
         }
     }
+
     public boolean deleteCustomerAccount(ID id) {
         try {
             CustomerAccountRepository.deleteById(id.getId());
             return true;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             return false;
         }
     }
+
     public Iterable<CustomerAccount> allCustomerAccounts() {
         return CustomerAccountRepository.findAll();
     }

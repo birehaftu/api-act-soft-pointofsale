@@ -2,6 +2,7 @@ package edu.act.apiactsoftpointofsale.services;
 
 import edu.act.apiactsoftpointofsale.domains.CustomerCard;
 import edu.act.apiactsoftpointofsale.domains.ID;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +42,10 @@ public class CustomerCardService {
     }
     public CustomerCard getCustomerCardByCard(String  id) {
         try {
-            return CustomerCardRepository.findByCardCode(id);
+            final JSONObject obj = new JSONObject(id);
+            System.out.println(obj.getString("cardCode"));
+            CustomerCard customerCard=CustomerCardRepository.findByCardCode(obj.getString("cardCode"));
+            return customerCard;
         }catch(Exception ex){
             return null;
         }

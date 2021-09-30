@@ -28,6 +28,9 @@ public class CustomerAccountController {
     @PostMapping("/api/customerAccount/update")
     public boolean updateCustomerAccount(@RequestBody CustomerAccount CustomerAccount) {
         return CustomerAccountService.updateCustomerAccount(CustomerAccount);
+    }@PostMapping("/api/customerAccount/updateBalance")
+    public boolean updateCustomerAccountBalance(@RequestBody CustomerAccount CustomerAccount) {
+        return CustomerAccountService.updateCustomerAccountBalance(CustomerAccount);
     }
 
     @PostMapping("/api/customerAccount/getByID")
