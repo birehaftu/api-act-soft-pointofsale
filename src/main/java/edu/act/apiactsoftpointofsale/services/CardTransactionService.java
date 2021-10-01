@@ -77,6 +77,7 @@ public class CardTransactionService {
         }
     }
     public Iterable<CardTransaction> allCardTransactions() {
-        return CardTransactionRepository.findAll();
+        Iterable<CardTransaction> tnx= CardTransactionRepository.findAll();
+        return tnx;
     }
 }
