@@ -44,7 +44,8 @@ public class CustomerCardService {
         try {
             final JSONObject obj = new JSONObject(id);
             System.out.println(obj.getString("cardCode"));
-            CustomerCard customerCard=CustomerCardRepository.findByCardCode(obj.getString("cardCode"));
+            String cardCode=obj.getString("cardCode");
+            CustomerCard customerCard=CustomerCardRepository.findByCardCode(cardCode);
             return customerCard;
         }catch(Exception ex){
             return null;
