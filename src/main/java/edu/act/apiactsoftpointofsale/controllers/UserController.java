@@ -42,7 +42,7 @@ public class UserController {
         try {
             Users us = UserService.findByUserName(userName);
             if (us!=null) {
-                if (us.getRole().equals("Admin")) {
+                if (us.getRole().equals("Admin") && us.getStatus().equals("Active")) {
                     Encryption ency = new Encryption();
                     return ency.Validate(password, us.getPassword());
                 } else {
