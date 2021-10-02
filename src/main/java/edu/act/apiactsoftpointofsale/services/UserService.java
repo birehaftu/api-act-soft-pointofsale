@@ -33,7 +33,11 @@ public class UserService {
             myUser.setEmail(User.getEmail());
             myUser.setUserName(User.getUserName());
             myUser.setFullName(User.getFullName());
-            myUser.setPassword(User.getPassword());
+            if(!User.getPassword().isEmpty()) {
+                Encryption ecn = new Encryption();
+                String rowpass=User.getPassword();
+                myUser.setPassword(ecn.EcryptPassword(rowpass));
+            }
             myUser.setPhone(User.getPhone());
             myUser.setRole(User.getRole());
             myUser.setStatus(myUser.getStatus());
