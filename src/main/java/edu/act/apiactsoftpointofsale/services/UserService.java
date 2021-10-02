@@ -40,7 +40,7 @@ public class UserService {
             }
             myUser.setPhone(User.getPhone());
             myUser.setRole(User.getRole());
-            myUser.setStatus(myUser.getStatus());
+            myUser.setStatus(User.getStatus());
             UserRepository.save(myUser);
             return true;
         } catch (Exception ex) {
