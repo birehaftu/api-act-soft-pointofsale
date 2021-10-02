@@ -28,8 +28,8 @@ public class UserService {
 
     public boolean updateUser(Users User) {
         try {
-            long id = User.getUserId();
-            Users myUser = UserRepository.findById(id).get();
+            String id = User.getUserName();
+            Users myUser = UserRepository.findByUserName(id);
             myUser.setEmail(User.getEmail());
             myUser.setUserName(User.getUserName());
             myUser.setFullName(User.getFullName());
